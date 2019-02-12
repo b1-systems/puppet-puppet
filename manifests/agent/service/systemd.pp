@@ -1,6 +1,7 @@
 # Set up running the agent via a systemd timer
 # @api private
 class puppet::agent::service::systemd (
+  Boolean $autostart = true,
   Boolean $enabled = false,
 ) {
   unless $::puppet::runmode == 'unmanaged' or 'systemd.timer' in $::puppet::unavailable_runmodes {
@@ -38,7 +39,7 @@ class puppet::agent::service::systemd (
         ensure   => running,
         provider => 'systemd',
         name     => "${::puppet::systemd_unit_name}.timer",
-        enable   => true,
+        enable   => $autostart,
         require  => Exec['systemctl-daemon-reload-puppet'],
       }
     } else {

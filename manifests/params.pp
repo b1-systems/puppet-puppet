@@ -54,6 +54,7 @@ class puppet::params {
   $aio_package      = ($::osfamily == 'Windows' or $::rubysitedir =~ /\/opt\/puppetlabs\/puppet/)
 
   $systemd_randomizeddelaysec = 0
+  $systemd_autostart = true
 
   case $::osfamily {
     'Windows' : {

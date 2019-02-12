@@ -82,6 +82,8 @@
 #                                           (in seconds) to the timer. Only relevant when
 #                                           runmode is 'systemd.timer'.
 #
+# $systemd_autostart::                      Whether to launch the timer with system start.
+#
 # $show_diff::                              Show and report changed files with diff output
 #
 # $module_repository::                      Use a different puppet module repository
@@ -564,6 +566,7 @@ class puppet (
   Optional[String] $cron_cmd = $puppet::params::cron_cmd,
   Optional[String] $systemd_cmd = $puppet::params::systemd_cmd,
   Integer[0] $systemd_randomizeddelaysec = $puppet::params::systemd_randomizeddelaysec,
+  Boolean $systemd_autostart = $puppet::params::systemd_autostart,
   Boolean $agent_noop = $puppet::params::agent_noop,
   Boolean $show_diff = $puppet::params::show_diff,
   Optional[Stdlib::HTTPUrl] $module_repository = $puppet::params::module_repository,

@@ -38,7 +38,8 @@ class puppet::agent::service {
   contain puppet::agent::service::daemon
 
   class { 'puppet::agent::service::systemd':
-    enabled => $systemd_enabled,
+    autostart => $systemd_autostart,
+    enabled   => $systemd_enabled,
   }
   contain puppet::agent::service::systemd
 
